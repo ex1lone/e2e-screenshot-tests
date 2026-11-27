@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-
+test.skip(!!process.env.CI, 'Skip OS-dependent screenshot comparison in Linux CI');
 test('Перевірка змін сторінки за скриншотом', async ({ page }) => {
     await page.goto('http://localhost:3000');
     expect(await page.screenshot()).toMatchSnapshot('screenshots/local-page/index-page.png');
